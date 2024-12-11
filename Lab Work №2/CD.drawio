@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="25.0.3">
+  <diagram name="Страница — 1" id="b3wxKo-BZ80gj3kZUoIB">
+    <mxGraphModel dx="1562" dy="1987" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vl2klNIEBFe-keQt76Bj-3" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;Пользователь" style="shape=actor;whiteSpace=wrap;html=1;strokeColor=default;fillColor=#7EA6E0;" vertex="1" parent="1">
+          <mxGeometry x="157" y="-1140" width="100" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-28" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Веб-приложение&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;[React]&lt;br&gt;&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Пользовательский интерфейс. Предоставляет доступ к функциональности системы: текстовые каналы, управление серверами, отправка/получение сообщений.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="57" y="-1000" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-29" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Api-&lt;/font&gt;&lt;/b&gt;&lt;b style=&quot;font-size: 14px;&quot;&gt;Server&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;[FastApi + python]&lt;br&gt;&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Центральный сервер, который обрабатывает бизнес-логику системы.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="57" y="-770" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-30" value="&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Database&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;[PostgreSQL]&lt;/b&gt;&lt;/span&gt;&lt;/font&gt;&lt;div&gt;Долговременное хранение сообщений, настроек серверов и данных пользователей.&amp;nbsp;&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="107" y="-550" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-31" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Message Server&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;[WebSocket + Python]&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;br&gt;Центральный сервер, который обрабатывает бизнес-логику системы.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="-770" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-32" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="vl2klNIEBFe-keQt76Bj-29">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="207" y="-890" as="sourcePoint" />
+            <mxPoint x="257" y="-940" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-33" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="vl2klNIEBFe-keQt76Bj-28">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="207" y="-1050" as="sourcePoint" />
+            <mxPoint x="257" y="-1100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-34" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.001;entryY=0.42;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="vl2klNIEBFe-keQt76Bj-31">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="357" y="-724" as="sourcePoint" />
+            <mxPoint x="537" y="-584.12" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-35" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="vl2klNIEBFe-keQt76Bj-29" target="vl2klNIEBFe-keQt76Bj-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="197" y="-720" as="sourcePoint" />
+            <mxPoint x="247" y="-770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-36" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.855;entryY=0;entryDx=0;entryDy=4.35;entryPerimeter=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="vl2klNIEBFe-keQt76Bj-31" target="vl2klNIEBFe-keQt76Bj-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="487" y="-720" as="sourcePoint" />
+            <mxPoint x="537" y="-770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-39" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="7" y="-1030" as="sourcePoint" />
+            <mxPoint x="830" y="-1030" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-40" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="7" y="-1030" as="sourcePoint" />
+            <mxPoint x="7" y="-370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-41" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="7" y="-370" as="sourcePoint" />
+            <mxPoint x="827" y="-370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-42" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="827" y="-370" as="sourcePoint" />
+            <mxPoint x="827" y="-1030" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-43" value="&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Управление текстовыми каналами.&lt;/div&gt;&lt;div&gt;- Создание и настройка серверов.&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="-860" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-44" value="&lt;div style=&quot;&quot;&gt;&lt;div&gt;- Получение текстовых сообщений от API-сервера.&lt;/div&gt;&lt;div&gt;- Отправка сообщений клиентам, подключённым к соответствующим каналам.&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="370" y="-870" width="183" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-45" value="&lt;div style=&quot;&quot;&gt;&lt;div&gt;- напрямую связывается с базой данных чтобы не перегружать api-server&lt;/div&gt;&lt;div&gt;- записывает историю сообщений в базу данных&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="-640" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="vl2klNIEBFe-keQt76Bj-46" value="&lt;div style=&quot;&quot;&gt;&lt;div&gt;- чтение и запись в базу данных&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="57" y="-650" width="170" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
