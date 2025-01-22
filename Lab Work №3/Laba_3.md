@@ -100,3 +100,81 @@ __Тип связи:__
 __Описание:__  
 Один пользователь может быть участником нескольких серверов. Например, пользователь "Аня" может быть участником серверов "Игры" и "Музыка".
 Один сервер может содержать нескольких участников. Например, сервер "Игры" может включать "Иван", "Аня" и "Сергей".
+
+Применение основных принципов разработки
+---
+
+__Принцип KISS (Keep It Simple, Stupid)__   
+Пример: Простая функция для получения списка пользователей сервера.  
+
+```
+# Серверный код (FastAPI)
+from fastapi import FastAPI, HTTPException
+
+app = FastAPI()
+
+# Простой хранилище данных
+servers = {
+    1: {"users": ["Alice", "Bob", "Charlie"]}
+}
+
+@app.get("/servers/{server_id}/users")
+def get_users(server_id: int):
+    if server_id not in servers:
+        raise HTTPException(status_code=404, detail="Server not found")
+    return servers[server_id]["users"]
+```
+Объяснение:  
+Код решает только одну задачу (KISS).  
+Нет лишней сложности или дополнительных проверок.  
+
+__Принцип YAGNI (You Aren't Gonna Need It)__  
+Пример: Создание текстового канала без предварительной реализации роли администратора, которая пока не нужна.  
+```
+@app.post("/servers/{server_id}/channels")
+def create_channel(server_id: int, channel_name: str):
+    if server_id not in servers:
+        raise HTTPException(status_code=404, detail="Server not found")
+    
+    # Добавляем канал
+    servers[server_id].setdefault("channels", []).append(channel_name)
+    return {"message": f"Channel '{channel_name}' created"}
+```
+Объяснение:  
+Реализована минимальная функциональность без учета пока ненужных ролей.  
+
+__Принцип DRY (Don't Repeat Yourself)__  
+Пример: Вынесение проверки существования сервера в отдельную функцию.  
+```
+def get_server_or_404(server_id: int):
+    if server_id not in servers:
+        raise HTTPException(status_code=404, detail="Server not found")
+    return servers[server_id]
+
+@app.get("/servers/{server_id}/users")
+def get_users(server_id: int):
+    server = get_server_or_404(server_id)
+    return server["users"]
+
+@app.post("/servers/{server_id}/channels")
+def create_channel(server_id: int, channel_name: str):
+    server = get_server_or_404(server_id)
+    server.setdefault("channels", []).append(channel_name)
+    return {"message": f"Channel '{channel_name}' created"}
+```
+Объяснение:  
+Проверка существования сервера реализована единожды и переиспользуется.  
+
+__Принципы SOLID__  
+Каждый класс выполняет одну задачу.  
+```
+class UserManager:
+    def get_users(self, server):
+        return server["users"]
+
+class ChannelManager:
+    def add_channel(self, server, channel_name):
+        server.setdefault("channels", []).append(channel_name)
+```
+Объяснение:  
+UserManager отвечает только за пользователей, а ChannelManager только за каналы.  
