@@ -95,7 +95,7 @@ __Поля:__
  - joined_at (DATETIME) — Дата и время присоединения к серверу.
 
 __Тип связи:__  
-"Многие ко многим" (M:N)
+"Один ко многим" (1:N)
 
 __Описание:__  
 Один пользователь может быть участником нескольких серверов. Например, пользователь "Аня" может быть участником серверов "Игры" и "Музыка".
@@ -166,7 +166,7 @@ def create_channel(server_id: int, channel_name: str):
 Проверка существования сервера реализована единожды и переиспользуется.  
 
 __Принципы SOLID__  
-Каждый класс выполняет одну задачу.  
+1. S - Single Responsibility Principle 
 ```
 class UserManager:
     def get_users(self, server):
@@ -178,3 +178,81 @@ class ChannelManager:
 ```
 Объяснение:  
 UserManager отвечает только за пользователей, а ChannelManager только за каналы.  
+2. O - Open/Closed Principle  
+```
+from abc import ABC, abstractmethod
+
+class Notifier(ABC):
+    @abstractmethod
+    def send(self, message):
+        pass
+
+class EmailNotifier(Notifier):
+    def send(self, message):
+        print(f"Sending email: {message}")
+
+class SMSNotifier(Notifier):
+    def send(self, message):
+        print(f"Sending SMS: {message}")
+```
+Объяснение: 
+Теперь можно добавить TelegramNotifier, не меняя код Notifier  
+3. L - Liskov Substitution Principle  
+```
+class BaseChannel(ABC):
+    """Абстрактный базовый класс для каналов"""
+    @abstractmethod
+    def connect(self):
+        pass
+
+class TextChannel(BaseChannel):
+    """Текстовый канал поддерживает отправку сообщений"""
+    def connect(self):
+        print("Connecting to text channel")
+
+    def send_message(self, message):
+        print(f"Message sent: {message}")
+
+class VoiceChannel(BaseChannel):
+    """Голосовой канал поддерживает голосовое соединение, но не текстовые сообщения"""
+    def connect(self):
+        print("Connecting to voice channel")
+```  
+Объяснение:  
+TextChannel и VoiceChannel не ломают логику базового класса.  
+4. I - Interface Segregation Principle  
+```    
+class TextMessaging(ABC):
+    @abstractmethod
+    def send_message(self, message):
+        pass
+
+class VoiceCommunication(ABC):
+    @abstractmethod
+    def start_voice_call(self):
+        pass
+
+class TextChannel(TextMessaging):
+    def send_message(self, message):
+        print(f"Message sent: {message}")
+
+class VoiceChannel(VoiceCommunication):
+    def start_voice_call(self):
+        print("Voice call started")
+```  
+Объяснение:  
+Классы реализуют только те методы, которые им нужны.  
+5. D - Dependency Inversion Principle
+```    
+class NotificationService:
+    def __init__(self, notifier: Notifier):
+        self.notifier = notifier  # Теперь можно передавать любой тип уведомлений
+
+    def notify(self, message):
+        self.notifier.send(message)
+
+email_service = NotificationService(EmailNotifier())
+sms_service = NotificationService(SMSNotifier())
+```  
+Объяснение:  
+Можно легко подменять Notifier, не изменяя NotificationService.  
